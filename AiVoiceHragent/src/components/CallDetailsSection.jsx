@@ -130,6 +130,7 @@ const CallDetailsSection = ({ call, onBack, styles }) => {
     }
 
     const messages = [];
+    const seen = new Set();
     lines.forEach((line) => {
       let role = 'other';
       let content = line;
@@ -158,7 +159,17 @@ const CallDetailsSection = ({ call, onBack, styles }) => {
         return;
       }
 
+      const normalized = `${role}::${content.trim().toLowerCase()}`;
+      if (seen.has(normalized)) {
+        return;
+      }
+
+      if (last && last.role === role && last.content.trim() === content.trim()) {
+        return;
+      }
+
       messages.push({ role, content });
+      seen.add(normalized);
     });
 
     return messages;
