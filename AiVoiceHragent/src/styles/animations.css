@@ -1,0 +1,377 @@
+/**
+ * Enhanced Animations and Visual Effects
+ * 
+ * This file contains CSS animations and interactive effects
+ * for buttons and other UI elements to improve user experience
+ */
+
+/* ============================================
+   BUTTON HOVER EFFECTS
+   ============================================ */
+
+/* Primary button with gradient and glow effect */
+.primary-button {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, box-shadow;
+}
+
+/* Ripple effect on click */
+.primary-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s, opacity 0.6s;
+  opacity: 0;
+}
+
+.primary-button:active::before {
+  width: 400px;
+  height: 400px;
+  opacity: 1;
+  transition: 0s;
+}
+
+/* Immediate hover feedback - lift and glow */
+.primary-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(59, 130, 246, 0.6),
+              0 0 40px rgba(139, 92, 246, 0.4);
+  filter: brightness(1.15);
+}
+
+/* Active press-down effect */
+.primary-button:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.5);
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus state for keyboard navigation */
+.primary-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5),
+              0 8px 25px rgba(59, 130, 246, 0.6);
+}
+
+/* Interactive button base class */
+.interactive-button {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, box-shadow;
+}
+
+/* Immediate hover feedback */
+.interactive-button:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+  background: rgba(59, 130, 246, 0.35);
+  border-color: rgba(59, 130, 246, 0.6);
+}
+
+/* Active press effect */
+.interactive-button:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus state */
+.interactive-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4),
+              0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Disabled state */
+.interactive-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  filter: grayscale(0.5);
+}
+
+.interactive-button:disabled:hover {
+  transform: none;
+  box-shadow: none;
+  background: initial;
+  border-color: initial;
+}
+
+/* ============================================
+   TAB HOVER EFFECTS
+   ============================================ */
+
+.tab-button {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.tab-button::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #60a5fa;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.tab-button:hover::after {
+  width: 100%;
+}
+
+.tab-button:hover {
+  color: #93c5fd;
+}
+
+/* ============================================
+   CALL ITEM HOVER EFFECTS
+   ============================================ */
+
+.call-item {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, box-shadow;
+}
+
+/* Gradient overlay on hover */
+.call-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.15) 100%);
+  opacity: 0;
+  border-radius: 0.5rem;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.call-item:hover::before {
+  opacity: 1;
+}
+
+/* Immediate hover feedback - slide and glow */
+.call-item:hover {
+  transform: translateX(6px) scale(1.01);
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.3),
+              -4px 0 12px rgba(59, 130, 246, 0.1);
+  background: rgba(30, 41, 59, 0.6);
+}
+
+/* Active press effect */
+.call-item:active {
+  transform: translateX(3px) scale(0.99);
+  box-shadow: 0 3px 10px rgba(59, 130, 246, 0.2);
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   FILE UPLOAD HOVER EFFECTS
+   ============================================ */
+
+label[for="csv-upload"]:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+  background: rgba(30, 41, 59, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+/* ============================================
+   INPUT FOCUS EFFECTS
+   ============================================ */
+
+input[type="tel"]:focus,
+input[type="text"]:focus {
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background: rgba(30, 41, 59, 0.7);
+}
+
+/* ============================================
+   LOADING SPINNER ANIMATION
+   ============================================ */
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* ============================================
+   SLIDE IN ANIMATION
+   ============================================ */
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   FADE IN ANIMATION
+   ============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease;
+}
+
+/* ============================================
+   PULSE ANIMATION FOR STATUS INDICATORS
+   ============================================ */
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.status-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ============================================
+   RIPPLE EFFECT FOR BUTTONS
+   ============================================ */
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ripple:active::after {
+  animation: ripple 0.6s ease-out;
+}
+
+/* ============================================
+   GLOW EFFECT FOR FEATURE CARDS
+   ============================================ */
+
+.feature-card-glow {
+  transition: all 0.3s ease;
+}
+
+.feature-card-glow:hover {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  border-color: rgba(59, 130, 246, 0.4);
+  transform: translateY(-4px);
+}
+
+/* ============================================
+   SMOOTH SCROLLING
+   ============================================ */
+
+* {
+  scroll-behavior: smooth;
+}
+
+/* ============================================
+   CUSTOM SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(30, 41, 59, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.7);
+}
+
+/* ============================================
+   AUDIO PLAYER STYLING
+   ============================================ */
+
+audio::-webkit-media-controls-panel {
+  background: rgba(30, 41, 59, 0.8);
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-pause-button {
+  background-color: #60a5fa;
+  border-radius: 50%;
+}
+
+/* ============================================
+   RESPONSIVE ANIMATIONS
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
